@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Card} from "react-bootstrap";
 import {formatDate} from "../utils/helpers";
 import {FaThumbsDown, FaThumbsUp} from 'react-icons/fa';
-import {handleLikePost} from "../actions/post";
+import {handleLikePost, handleDislikePost} from "../actions/post";
 import {connect} from "react-redux";
 
 
@@ -33,7 +33,7 @@ class Post extends Component {
                             </Card.Link>
                             <span className="margin-vote">{voteScore}</span>
                             <Card.Link href="#">
-                                <div className="post-vote-icon" onClick={() => this.props.handleLikePost(id)}>
+                                <div className="post-vote-icon" onClick={() => this.props.handleDislikePost(id)}>
                                     <FaThumbsDown />
                                 </div>
                             </Card.Link>
@@ -53,4 +53,4 @@ const mapStateToProps = (state) => {
     }
 };
 
-export default connect(mapStateToProps, {handleLikePost})(Post)
+export default connect(mapStateToProps, {handleLikePost, handleDislikePost})(Post)

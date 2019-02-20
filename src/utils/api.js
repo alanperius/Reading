@@ -62,39 +62,34 @@ export const getPostComments = (postId) =>
             return error
         })
 
-
-
-/*export const votePostUpdate = (id, voteOption) =>
-    fetch(`${api}/posts/${id}`, {
-        method: 'POST',
-        body: JSON.stringify({
-            option: voteOption
-        }),
-        headers
-    })
-        .then(res => res.json())
-        .then(data => {
-             console.log("post com commentários")
-             console.log(data)
-            return data
-        })
-        .catch(error => {
-            console.log(error)
-            return error
-        })*/
-
 export const increasePost = (id) =>
     fetch(`${api}/posts/${id}`, {
-        headers,
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json',
+        },
         method: 'POST',
-        body: JSON.stringify({ option: 'upVote' })
+        body: JSON.stringify({option: 'upVote'})
     })
         .then(res => res.json())
         .then(data => {
-           return data
+            return data
         })
         .catch(error =>  console.warn(error))
 
-export default api;
+export const decrementPost = (id) =>
+    fetch(`${api}/posts/${id}`, {
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json',
+        },
+        method: 'POST',
+        body: JSON.stringify({option: 'downVote'})
+    })
+        .then(res => res.json())
+        .then(data => {
+            return data
+        })
+        .catch(error =>  console.warn(error))
 
 

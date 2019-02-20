@@ -1,9 +1,6 @@
-import {LIKE_POST, RECEIVE_POSTS, RECEIVE_POSTS_CATEGORY} from "../actions/post";
+import {DISLIKE_POST, LIKE_POST, RECEIVE_POSTS, RECEIVE_POSTS_CATEGORY} from "../actions/post";
 
 
-
-
-let updatedPosts = [];
 export default function posts(state = [], action) {
     switch (action.type) {
         case RECEIVE_POSTS:
@@ -16,20 +13,9 @@ export default function posts(state = [], action) {
                 ...action.posts
             ]
         case LIKE_POST:
-            updatedPosts = state.map((item) => {
-                if (item.id !== action.post.id)
-                    return item
-
-                return {
-                    ...item,
-                    ...action.post
-                }
-            })
-
-            return {
-                ...state,
-                posts: [...updatedPosts]
-            }
+            return state.map(post => post.id === action.post.id ? action.post : post)
+        case DISLIKE_POST:
+            return state.map(post => post.id === action.post.id ? action.post : post)
         default:
             return state
     }
