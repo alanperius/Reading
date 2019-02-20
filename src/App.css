@@ -1,3 +1,7 @@
+body{
+  background-color: #e9ebee;
+  font-family: inherit;
+}
 .App {
   text-align: center;
 }
@@ -31,3 +35,124 @@
     transform: rotate(360deg);
   }
 }
+
+.nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  text-decoration: none;
+}
+
+.nav li:first-child {
+  padding-left: 0;
+}
+
+ul {
+  padding-left: 0;
+}
+
+li {
+  list-style-type: none;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.banner {
+  background-color: #4267b2;
+  border-bottom: 1px solid #29487d;
+  color: #fff;
+}
+
+.banner-align {
+  text-align: right;
+}
+
+.nav{
+  text-align: center;
+}
+
+.nav-padding{
+  padding: 10px;
+  margin: 10px;
+}
+
+.title{
+  font-size: 28px;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+}
+
+.nav-menu{
+  background: white;
+  border-radius: 18px;
+  cursor: pointer;
+}
+
+.container-nav{
+  background-color: white;
+  width: 600px;
+  height: 50px;
+  display: inline-block;
+  border: 1px solid #dddfe2;
+  border-radius: 3px;
+}
+
+.container-post{
+  border: 1px solid #dddfe2;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+.container-new{
+  background-color: white;
+  width: 600px;
+  display: inline-block;
+  border: 1px solid #dddfe2;
+  border-radius: 3px;
+}
+
+.button-post{
+  background-color: #4267b2;
+  border-color: #4267b2;
+  border-radius: 2px;
+  box-sizing: content-box;
+  font-size: 12px;
+  -webkit-font-smoothing: antialiased;
+  font-weight: bold;
+  -webkit-justify-content: center;
+  justify-content: center;
+  padding: 5px 10px;
+  position: relative;
+  text-align: center;
+  text-shadow: none;
+  vertical-align: middle;
+  color: #fff;
+}
+
+.margin-vote{
+  margin: 0 5px;
+}
+
+.combo-box{
+  background-color: #f5f6f7;
+  border-color: #ccd0d5;
+  color: #4b4f56;
+  border: 1px solid;
+  border-radius: 2px;
+  box-sizing: content-box;
+  -webkit-font-smoothing: antialiased;
+  font-weight: bold;
+  justify-content: center;
+  padding: 0 8px;
+  position: relative;
+  text-align: center;
+  text-shadow: none;
+  vertical-align: middle;
+  height: 30px;
+  width: 150px;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
