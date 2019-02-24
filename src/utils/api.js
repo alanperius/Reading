@@ -1,12 +1,14 @@
-import axios from 'axios';
-
 const api = "http://localhost:3001";
 
-const headers = {
-    'Accept': 'application/json',
-    'Authorization': 'whatever-you-want'
-}
+let token = localStorage.token;
+if (!token)
+    token = localStorage.token = Math.random().toString(36).substr(-8);
 
+const headers = {
+    Accept: "application/json",
+    Authorization: token,
+    "Content-Type": "application/json"
+};
 export const getAllPosts = () =>
     fetch(`${api}/posts`, { headers })
         .then(res => res.json())
@@ -91,5 +93,39 @@ export const decrementPost = (id) =>
             return data
         })
         .catch(error =>  console.warn(error))
+
+export const addPost = (postData) => fetch(`${api}/posts`, {
+    headers,
+    method: 'POST',
+    body: JSON.stringify(postData)
+})
+    .then(res => res.json())
+    .then(data => data)
+    .catch(error => console.warn(error))
+
+/*
+export const savePost = (newPost) => {
+        axios({
+            method: 'post',
+            headers: headers,
+            url: `${api}/posts`,
+            data: {
+                id: Math.random().toString(36).substr(-8),
+                timestamp: Date.now(),
+                title: newPost.title,
+                body: newPost.body,
+                author: newPost.author,
+                category: newPost.category
+            }
+        }).then(res => {
+            console.log("===============================savePost===");
+            console.log(res.data);
+            return res.data
+        }).catch(error => {
+            console.log(error);
+            return error
+        });
+    }
+*/
 
 

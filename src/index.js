@@ -6,7 +6,6 @@ import {createStore} from "redux";
 import {Provider} from 'react-redux'
 import reducers from './reducers'
 import middleware from './middleware'
-import ReduxThunk from "redux-thunk";
 
 
 const store = createStore(reducers, middleware)

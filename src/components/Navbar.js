@@ -2,7 +2,7 @@ import React from 'react'
 import {NavLink} from "react-router-dom";
 import {IoMdAddCircleOutline} from "react-icons/io";
 import { IconContext } from "react-icons";
-import { Nav, Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 
 
 
@@ -10,7 +10,7 @@ export default function Navbar() {
     return (
         <div>
             <div className='banner fixed-top'>
-                <Container>
+                <Container >
                     <Row>
                         <Col></Col>
                         <Col xs={6}>

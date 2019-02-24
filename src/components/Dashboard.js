@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {handleAllPosts, handlePostsForCategories} from "../actions/shared";
+import { handlePostsForCategories} from "../actions/shared";
+import {handleAllPosts} from "../actions/post";
 import {connect} from "react-redux";
 import ListPosts from "./ListPosts";
 
@@ -15,7 +16,7 @@ class Dashboard extends Component {
     }
 
     loadPostsByCategory = () => {
-        const {match, dispatch} = this.props;
+        const {match} = this.props;
         this.props.handlePostsForCategories(match.params.category)
     };
 

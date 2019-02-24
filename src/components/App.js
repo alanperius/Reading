@@ -15,16 +15,14 @@ class App extends Component {
         return (
             <Router>
                 <div className="App">
-                    <div>
                     <Navbar/>
                     <Categories/>
-                        <Route path='/' exact component={Dashboard}/>
-                        <Route path='/post/:id' exact component={PostPage}/>
+                    <Route path='/' exact component={Dashboard}/>
+                    <Route path='/post/:id' exact component={PostPage}/>
+                    <Switch>
                         <Route path='/new' exact component={NewPost}/>
                         <Route path='/:category' exact component={Dashboard}/>
-                    </div>
-
-
+                    </Switch>
                 </div>
             </Router>
         );
@@ -32,8 +30,9 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
+
     return {
-        loading: state.categories === null
+        loading: state.categories === null,
     }
 };
 
