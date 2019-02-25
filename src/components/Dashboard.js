@@ -3,6 +3,7 @@ import { handlePostsForCategories} from "../actions/shared";
 import {handleAllPosts} from "../actions/post";
 import {connect} from "react-redux";
 import ListPosts from "./ListPosts";
+import {LoadingBar} from "react-redux-loading";
 
 class Dashboard extends Component {
     componentDidMount() {
@@ -24,16 +25,24 @@ class Dashboard extends Component {
     render() {
         const {posts} = this.props;
         return (
-            <div className="container">
-                <ListPosts posts={posts}/>
+            <div>
+                <LoadingBar/>
+                <div className="container">
+                    {this.props.loading === true ? null :
+                        <ListPosts posts={posts}/>
+                    }
+                </div>
             </div>
+
         );
     }
 }
 
 const mapStateToProps = (state) => {
     return {
-        posts: state.posts
+        posts: state.posts,
+        loading: false
+
     }
 };
 
