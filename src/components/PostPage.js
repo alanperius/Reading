@@ -2,11 +2,17 @@ import React, {Component} from 'react';
 import Post from './Post'
 import {connect} from "react-redux";
 import {handlePostById} from "../actions/post";
-import {handlePostCommentsById, handleAddComment, handleLikeComment, handleDislikeComment, handleDeleteComment} from "../actions/comments";
+import {
+    handleAddComment,
+    handleDeleteComment,
+    handleDislikeComment,
+    handleLikeComment,
+    handlePostCommentsById,
+    handleEditComment
+} from "../actions/comments";
 import {Card, Col, Container, Form, Row} from "react-bootstrap";
-import {FaThumbsDown, FaThumbsUp, FaTrashAlt, FaTrash, FaPencilAlt} from 'react-icons/fa';
-import Alert from "react-bootstrap/Alert";
-
+import {FaPencilAlt, FaThumbsDown, FaThumbsUp, FaTrashAlt} from 'react-icons/fa';
+import EditModalComment from './EditModalComment'
 
 
 class PostPage extends Component {
@@ -14,10 +20,15 @@ class PostPage extends Component {
     constructor(props) {
         super(props);
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleShow = this.handleShow.bind(this);
+        this.handleClose = this.handleClose.bind(this);
         this.state = this.initialState;
     }
 
     initialState = {
+        show: false,
+        id: '',
+        body: '',
         newComment: {
             body: '',
             author: 'Alan',
@@ -46,6 +57,18 @@ class PostPage extends Component {
         this.props.handleAddComment(newComment)
         this.resetState()
     };
+
+    handleClose() {
+        this.setState({ show: false });
+    }
+
+    handleShow(id, body) {
+        this.setState({
+            show: true,
+            id: id,
+            body: body,
+        })
+    }
 
     render() {
         const {posts, comments} = this.props;
@@ -91,7 +114,7 @@ class PostPage extends Component {
                                             <Col sm={2}>
                                                <div className="comment-action-button" onClick={() => this.props.handleDeleteComment(comment.id)}><FaTrashAlt/></div>
                                                 <span className="margin-vote"></span>
-                                                <div className="comment-action-button"><FaPencilAlt/></div>
+                                                <div className="comment-action-button" onClick={() => this.handleShow(comment.id, comment.body)}><FaPencilAlt/></div>
                                             </Col>
                                         </Row>
                                     </div>
@@ -125,6 +148,14 @@ class PostPage extends Component {
                     </Form>
                 </div>
 
+                <EditModalComment
+                    id={this.state.id}
+                    body={this.state.body}
+                    show={this.state.show}
+                    editComment={this.props.handleEditComment}
+                    onClose={this.handleClose}
+                />
+
             </div>
         );
     }
@@ -144,5 +175,6 @@ export default connect(mapStateToProps,
         handleAddComment,
         handleLikeComment,
         handleDislikeComment,
-        handleDeleteComment
+        handleDeleteComment,
+        handleEditComment
     })(PostPage)

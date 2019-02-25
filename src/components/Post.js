@@ -5,7 +5,7 @@ import {FaCommentAlt, FaPencilAlt, FaThumbsDown, FaThumbsUp, FaTrashAlt} from 'r
 import {handleDislikePost, handleLikePost, handleDeletePost, handleEditPost} from "../actions/post";
 import {connect} from "react-redux";
 import {NavLink} from "react-router-dom";
-import EditModal from './EditModal'
+import EditModalPost from './EditModalPost'
 
 class Post extends Component {
     constructor(props) {
@@ -28,13 +28,6 @@ class Post extends Component {
         this.props.post.title = "dasdasadsdas"
     }
 
-   /* editPost(post){
-        console.log("-------------------------");
-        console.log(post);
-        this.props.handleEditPost(post)
-        this.handleClose()
-
-    }*/
     handleClose() {
         this.setState({ show: false });
     }
@@ -132,7 +125,7 @@ class Post extends Component {
                     </Card>
                 </div>
 
-                <EditModal
+                <EditModalPost
                     show={this.state.show}
                     body={this.state.body}
                     id={this.state.id}

@@ -6,6 +6,7 @@ export const ADD_COMMENT = 'ADD_COMMENT';
 export const DISLIKE_COMMENT = 'DISLIKE_COMMENT';
 export const LIKE_COMMENT = 'LIKE_COMMENT';
 export const DELETE_COMMENT = 'DELETE_COMMENT';
+export const EDIT_COMMENT = 'EDIT_COMMENT';
 
 let token = localStorage.token;
 const headers = {
@@ -118,6 +119,35 @@ export const handleDeleteComment = (id) => {
             });
     };
 };
+
+
+export const handleEditComment = (id, body) => {
+    return dispatch => {
+        dispatch(showLoading())
+        return axios
+            .put(
+                `http://localhost:3001/comments/${id}`,
+                {timestamp: Date.now(), body: body},
+                { headers: headers }
+            )
+            .then(response => {
+                console.log("--------------------");
+                console.log(response.data);
+                dispatch(editComment(response.data));
+                dispatch(hideLoading())
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    };
+};
+
+export function editComment(comment) {
+    return {
+        type: EDIT_COMMENT,
+        comment,
+    }
+}
 
 export function deleteComment(commentDeleted) {
     return {

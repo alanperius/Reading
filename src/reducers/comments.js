@@ -1,4 +1,4 @@
-import {RECEIVE_POST_COMMENTS, ADD_COMMENT, LIKE_COMMENT, DISLIKE_COMMENT, DELETE_COMMENT} from "../actions/comments";
+import {RECEIVE_POST_COMMENTS, ADD_COMMENT, LIKE_COMMENT, DISLIKE_COMMENT, DELETE_COMMENT, EDIT_COMMENT} from "../actions/comments";
 
 export default function posts(state = [], action) {
     switch (action.type) {
@@ -12,6 +12,8 @@ export default function posts(state = [], action) {
             return state.map(comment => comment.id === action.comment.id ? action.comment : comment)
         case DELETE_COMMENT:
             return state.filter(comment => comment.id !== action.commentDeleted.id)
+        case EDIT_COMMENT:
+            return state.map(comment => comment.id === action.comment.id ? action.comment : comment)
         default:
             return state
     }

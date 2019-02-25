@@ -2,12 +2,11 @@ import React, {Component} from 'react';
 import {Button, Form, Modal} from "react-bootstrap";
 
 
-class EditModal extends Component {
+class EditModalPost extends Component {
 
 
     state = {
         id: this.props.id,
-        title: this.props.title,
         body: this.props.body
     };
 
@@ -15,9 +14,8 @@ class EditModal extends Component {
         this.props.onClose();
 
     }
-    handleSavePost = () => {
-        this.props.onHandleSubmit(this.props.id,
-            this.state.title !== '' ? this.state.title : this.props.title,
+    saveComment = () => {
+        this.props.editComment(this.props.id,
             this.state.body !== '' ? this.state.body : this.props.body)
         this.handleOnClose()
 
@@ -43,15 +41,6 @@ class EditModal extends Component {
                     </Modal.Header>
                     <Modal.Body>
                         <Form>
-                            <Form.Group controlId="postTitle">
-                                <Form.Label>Post Title</Form.Label>
-                                <Form.Control
-                                    name="title"
-                                    onChange={this.handleInputChange}
-                                    defaultValue={this.props.title}
-                                    placeholder="Enter Title Here."/>
-                            </Form.Group>
-
                             <Form.Group controlId="postText">
                                 <Form.Label></Form.Label>
                                 <Form.Control
@@ -67,10 +56,10 @@ class EditModal extends Component {
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={this.handleOnClose}>
-                    Close
-                </Button>
+                            Close
+                        </Button>
 
-                        <Button variant="primary"  onClick={this.handleSavePost}>
+                        <Button variant="primary"  onClick={this.saveComment}>
                             Save Changes
                         </Button>
 
@@ -81,4 +70,4 @@ class EditModal extends Component {
     }
 }
 
-export default EditModal;
+export default EditModalPost;
