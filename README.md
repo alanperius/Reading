@@ -18,6 +18,6 @@ You just need to `run yarn` install and `yarn start` at root folder of this proj
 Step 2: Connecting to API Server
 This project needs to integrate with a local API server. In order to setup this API Server localhost you need to:
 
-Clone or Download ![API Project](https://github.com/udacity/reactnd-project-readable-starter)
+Clone or Download [API Project](https://github.com/udacity/reactnd-project-readable-starter)
 
 Inside api-server folder, run `npm install` and `node server`
