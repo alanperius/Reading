@@ -6,7 +6,7 @@ This project is part of Udacity React Nanodegree course.
 
 I just tried to create an layout similar from Facebook :D
 
-![alt text](https://i.imgur.com/XYhDww4.png)
+![alt text](blob:https://imgur.com/6490bc8a-dddb-45b4-a7cd-daaefe6703e1)
 
 
 Installation:
