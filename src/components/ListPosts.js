@@ -32,7 +32,7 @@ class ListPosts extends Component {
                 </div>
 
                 {posts.map((post) => (
-                    <div>
+                    <div key={post.id}>
                         <Post post={post}/>
                     </div>
 

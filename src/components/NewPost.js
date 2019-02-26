@@ -2,12 +2,14 @@ import React, {Component} from 'react';
 import {Form} from 'react-bootstrap'
 import {connect} from "react-redux";
 import {handleAddPost} from "../actions/post";
+import {Redirect} from "react-router-dom";
 
 class NewPost extends Component {
     constructor(props) {
         super(props);
         this.handleInputChange = this.handleInputChange.bind(this);
         this.state = {
+            toHome: false,
             newPost: {
                 title: '',
                 category: '',
@@ -28,14 +30,15 @@ class NewPost extends Component {
         e.preventDefault();
         const {newPost} = this.state;
         console.log('new post is: ', newPost);
-
         this.props.handleAddPost(newPost)
-
-
+        this.setState({toHome: true})
     };
 
     render() {
-        const {newPost} = this.state;
+        const {newPost, toHome} = this.state;
+        if(toHome === true) {
+            return <Redirect to='/'/>
+        }
         return (
             <div>
                 <h1>Create a New Post</h1>

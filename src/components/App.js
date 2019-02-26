@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import '../App.css';
 import Navbar from './Navbar'
 import Dashboard from './Dashboard'
@@ -13,6 +13,7 @@ class App extends Component {
     render() {
         return (
             <Router>
+                <Fragment>
                 <div className="App">
                         <div>
                             <Navbar/>
@@ -25,6 +26,7 @@ class App extends Component {
                             </Switch>
                         </div>
                 </div>
+                </Fragment>
             </Router>
         );
     }

@@ -5,9 +5,9 @@ import {NavLink} from "react-router-dom";
 import {handleAllCategories} from "../actions/shared";
 
 class Categories extends Component {
-    componentDidMount =  () => {
+    componentDidMount = () => {
         this.props.handleAllCategories();
-    }
+    };
 
     render() {
 
@@ -15,13 +15,16 @@ class Categories extends Component {
             <div>
                 <div className="container jumbotron">
                     <Nav className="justify-content-center" activeKey="/home">
-                        {this.props.categories !== null && (
+                        {this.props.loading === 0 && (
                             this.props.categories.map((categorie) => (
-                                <Nav.Item>
-                                    <div className="nav-padding nav-menu">
-                                            <NavLink to={'/'+categorie.path} exact activeClassName='active' >
+                                <Nav.Item key={categorie.path}>
+                                    <div className="nav-padding nav-menu" key={categorie.path}>
+
+                                            <NavLink to={'/' + categorie.path} exact activeClassName='active' key={categorie.path}>
                                                 {categorie.name}
                                             </NavLink>
+
+
                                     </div>
                                 </Nav.Item>
                             ))
@@ -35,9 +38,11 @@ class Categories extends Component {
 }
 
 const mapStateToProps = state => {
+    console.log("state.loadingBar.defaultstate.loadingBar.default = " + state.loadingBar.default);
     return {
-        categories: state.categories
+        categories: state.categories,
+        loading: state.loadingBar.default,
     }
-}
+};
 
 export default connect(mapStateToProps, {handleAllCategories})(Categories);
