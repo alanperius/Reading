@@ -37,7 +37,7 @@ class EditModalPost extends Component {
 
         return (
             <div>
-                <Modal show={this.props.show} >
+                <Modal show={this.props.show} onHide={this.handleOnClose}>
                     <Modal.Header closeButton>
                         <Modal.Title>Modal heading</Modal.Title>
                     </Modal.Header>

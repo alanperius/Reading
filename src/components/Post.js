@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Card, Col, Container, Row, Modal, Button, Form} from "react-bootstrap";
+import {Card, Col, Container, Row} from "react-bootstrap";
 import {formatDate} from "../utils/helpers";
 import {FaCommentAlt, FaPencilAlt, FaThumbsDown, FaThumbsUp, FaTrashAlt} from 'react-icons/fa';
 import {handleDislikePost, handleLikePost, handleDeletePost, handleEditPost} from "../actions/post";
@@ -43,7 +43,7 @@ class Post extends Component {
     }
 
     render() {
-        const {id, timestamp, title, body, author, category, voteScore, deleted, commentCount} = this.props.post;
+        const {id, timestamp, title, body, author, voteScore, commentCount} = this.props.post;
 
 
         return (

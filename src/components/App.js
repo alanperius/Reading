@@ -14,7 +14,7 @@ class App extends Component {
         return (
             <Router>
                 <Fragment>
-                <div className="App">
+                    <div className="App">
                         <div>
                             <Navbar/>
                             <Categories/>
@@ -25,10 +25,11 @@ class App extends Component {
                                 <Route path='/:category' exact component={Dashboard}/>
                             </Switch>
                         </div>
-                </div>
+                    </div>
                 </Fragment>
             </Router>
         );
     }
 }
+
 export default App;

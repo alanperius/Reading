@@ -6,7 +6,12 @@ import ListPosts from "./ListPosts";
 
 class Dashboard extends Component {
     componentDidMount() {
-        this.props.handleAllPosts();
+        if(!this.props.match.params.category){
+            this.props.handleAllPosts();
+        }else{
+            this.loadPostsByCategory()
+        }
+
     }
 
     componentDidUpdate(prevProps) {

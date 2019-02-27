@@ -15,7 +15,7 @@ export default function Navbar() {
                     <Row>
                         <Col></Col>
                         <Col xs={6}>
-                            <NavLink to='/' className=""> <span className="title" >Projeto Leitura </span></NavLink>
+                            <NavLink to='/' className=""> <span className="title" >Reading Project</span></NavLink>
                         </Col >
                         <Col>
                             <NavLink to='/new' exact activeClassName='active'>
