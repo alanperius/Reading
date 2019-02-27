@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {Nav} from "react-bootstrap";
 import {NavLink} from "react-router-dom";
-import {handleAllCategories} from "../actions/shared";
+import {handleAllCategories} from "../actions/categories";
 
 class Categories extends Component {
 

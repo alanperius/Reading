@@ -38,7 +38,6 @@ export const handleAddPost = (post) => {
             }
         })
             .then(res => {
-                console.log(res.data);
                 dispatch(addPost(res.data))
                 dispatch(hideLoading())
             })
@@ -56,13 +55,28 @@ export const handleAllPosts = () => {
             .then(response => {
                 dispatch(receivePosts(response.data));
                 dispatch(hideLoading())
-                console.log(response.data);
             })
             .catch(error => {
                 console.log(error);
             });
     };
 };
+
+export const handlePostsForCategories = (category) => {
+    return dispatch => {
+        dispatch(showLoading())
+        return axios
+            .get(`http://localhost:3001/${category}/posts`, { headers: headers })
+            .then(response => {
+                dispatch(receivePostsByCategory(response.data));
+                dispatch(hideLoading())
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    };
+};
+
 
 export const handleLikePost = id => {
     return dispatch => {
@@ -125,10 +139,6 @@ export const handleDislikePost = id => {
             });
     };
 };
-/*DELETE /posts/:id
-USAGE:
-    Sets the deleted flag for a post to 'true'.
-    Sets the parentDeleted flag for all child comments to 'true'.*/
 
 export const handleDeletePost = (id) => {
     return dispatch => {
@@ -160,8 +170,6 @@ export const handleEditPost = (id, title, body) => {
                 { headers: headers }
             )
             .then(response => {
-                console.log("--------------------");
-                console.log(response.data);
                 dispatch(editPost(response.data));
                 dispatch(hideLoading())
             })
@@ -170,6 +178,9 @@ export const handleEditPost = (id, title, body) => {
             });
     };
 };
+
+
+
 
 export function editPost(post) {
     return {

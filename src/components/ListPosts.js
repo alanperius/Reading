@@ -33,7 +33,7 @@ class ListPosts extends Component {
                                 <p>Sort by:</p>
                                 <select name="sortBy" value={this.state.sortBy} onChange={this.handleInputChange}
                                         className="combo-box">
-                                    <option value="" disabled>Option</option>
+                                    <option value="" disabled>Select</option>
                                     <option value="voteScore">Vote</option>
                                     <option value="timestamp">Date</option>
                                 </select>

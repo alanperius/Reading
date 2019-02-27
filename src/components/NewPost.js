@@ -21,7 +21,6 @@ class NewPost extends Component {
 
     handleInputChange(e) {
         let newPost = Object.assign({}, this.state.newPost);
-        console.log(e.target.value);
         newPost[e.target.name] = e.target.value;
         this.setState({newPost})
     }
@@ -29,7 +28,6 @@ class NewPost extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         const {newPost} = this.state;
-        console.log('new post is: ', newPost);
         this.props.handleAddPost(newPost)
         this.setState({toHome: true})
     };
@@ -48,6 +46,7 @@ class NewPost extends Component {
                             <Form.Label>Post Title</Form.Label>
                             <Form.Control
                                 name="title"
+                                required={true}
                                 placeholder="Enter Title Here."
                                 defaultValue={newPost.title}
                                 onChange={this.handleInputChange}/>
@@ -56,12 +55,13 @@ class NewPost extends Component {
                             <Form.Label>Category</Form.Label>
                             <Form.Control as="select"
                                           defaultValue={newPost.category}
+                                          required={true}
                                           onChange={this.handleInputChange}
                                           name="category">
                                 <option> Select</option>
                                 {
                                     this.props.categories.map((category) => (
-                                        <option key={category.path} value={category.path}>
+                                        <option  key={category.path} value={category.path}>
                                             {category.name}
                                         </option>
                                     ))
@@ -73,6 +73,7 @@ class NewPost extends Component {
                             <Form.Control
                                 as="textarea"
                                 rows="3"
+                                required={true}
                                 defaultValue={newPost.body}
                                 onChange={this.handleInputChange}
                                 name="body"/>

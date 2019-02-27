@@ -50,7 +50,6 @@ export const handleAddComment = (comment) => {
             }
         })
             .then(res => {
-                console.log(res.data);
                 dispatch(addComment(res.data));
                 dispatch(hideLoading())
             })
@@ -131,8 +130,6 @@ export const handleEditComment = (id, body) => {
                 { headers: headers }
             )
             .then(response => {
-                console.log("--------------------");
-                console.log(response.data);
                 dispatch(editComment(response.data));
                 dispatch(hideLoading())
             })

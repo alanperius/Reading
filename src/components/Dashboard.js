@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import { handlePostsForCategories} from "../actions/shared";
-import {handleAllPosts} from "../actions/post";
+import {handleAllPosts, handlePostsForCategories} from "../actions/post";
 import {connect} from "react-redux";
 import ListPosts from "./ListPosts";
 

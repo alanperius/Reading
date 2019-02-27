@@ -23,10 +23,6 @@ class Post extends Component {
         }
     }
 
-    handleInputChange(e) {
-        console.log(e.target.value);
-        this.props.post.title = "dasdasadsdas"
-    }
 
     handleClose() {
         this.setState({ show: false });
@@ -43,7 +39,7 @@ class Post extends Component {
     }
 
     render() {
-        const {id, timestamp, title, body, author, voteScore, commentCount} = this.props.post;
+        const {id, timestamp, title, body, author, voteScore, commentCount, category} = this.props.post;
 
 
         return (
@@ -96,7 +92,7 @@ class Post extends Component {
                                         </Col>
 
                                         <Col xs={2}>
-                                            <NavLink to={'/post/' + id} exact activeClassName='active'>
+                                            <NavLink to={'/'+category+'/' + id} exact activeClassName='active'>
                                                 <div className="post-action post-action-button">
 
                                                     <span className="margin-vote">{commentCount}</span>
