@@ -24,7 +24,6 @@ export default function posts(state = [], action) {
                 ...action.posts
             ]
         case LIKE_POST:
-            return state.map(post => post.id === action.post.id ? action.post : post)
         case DISLIKE_POST:
             return state.map(post => post.id === action.post.id ? action.post : post)
         case ADD_POST:
@@ -33,9 +32,6 @@ export default function posts(state = [], action) {
             return state.filter(post => post.id !== action.postDeleted.id)
         case EDIT_POST:
             return state.map(post => post.id === action.post.id ? action.post : post)
-
-
-            /*state.map(post => post.id !== action.postDeleted.id ? post : [])*/
         default:
             return state
     }

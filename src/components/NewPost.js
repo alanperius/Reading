@@ -14,7 +14,7 @@ class NewPost extends Component {
                 title: '',
                 category: '',
                 body: '',
-                author: 'Alan',
+                author: '',
             }
         }
     }
@@ -49,6 +49,15 @@ class NewPost extends Component {
                                 required={true}
                                 placeholder="Enter Title Here."
                                 defaultValue={newPost.title}
+                                onChange={this.handleInputChange}/>
+                        </Form.Group>
+                        <Form.Group controlId="postTitle">
+                            <Form.Label>Author</Form.Label>
+                            <Form.Control
+                                name="author"
+                                required={true}
+                                placeholder="Author name Here."
+                                defaultValue={newPost.author}
                                 onChange={this.handleInputChange}/>
                         </Form.Group>
                         <Form.Group controlId="postCategory">

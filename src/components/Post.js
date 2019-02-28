@@ -6,6 +6,8 @@ import {handleDislikePost, handleLikePost, handleDeletePost, handleEditPost} fro
 import {connect} from "react-redux";
 import {NavLink} from "react-router-dom";
 import EditModalPost from './EditModalPost'
+import PropTypes from 'prop-types';
+
 
 class Post extends Component {
     constructor(props) {
@@ -140,6 +142,10 @@ const mapStateToProps = (state) => {
     return {
         posts: state.posts
     }
+};
+
+Post.propTypes = {
+    post: PropTypes.object.isRequired,
 };
 
 export default connect(mapStateToProps, {handleLikePost, handleDislikePost, handleDeletePost, handleEditPost})(Post)

@@ -12,6 +12,7 @@ import {
 } from "../actions/comments";
 import {Card, Col, Container, Form, Row} from "react-bootstrap";
 import {FaPencilAlt, FaThumbsDown, FaThumbsUp, FaTrashAlt} from 'react-icons/fa';
+import {IoMdSend} from "react-icons/io";
 import EditModalComment from './EditModalComment'
 
 
@@ -23,7 +24,7 @@ class PostPage extends Component {
         body: '',
         newComment: {
             body: '',
-            author: 'Alan',
+            author: '',
             parentId: this.props.match.params.id
         }
     };
@@ -87,7 +88,18 @@ class PostPage extends Component {
                             <div className="post-comment-box card comment-margin-content">
                                 <Container>
                                     <Row>
-                                        <Col>
+                                        <Col sm={2}>
+
+                                            <input className="input-comment"
+                                                   name="author"
+                                                   required={true}
+                                                   value={this.state.newComment.author}
+                                                   placeholder="Author name"
+                                                   onChange={this.handleInputChange}>
+                                            </input>
+                                        </Col>
+
+                                        <Col xs={8}>
 
                                             <input className="input-comment"
                                                    name="body"
@@ -97,14 +109,21 @@ class PostPage extends Component {
                                                    onChange={this.handleInputChange}>
                                             </input>
                                         </Col>
-                                    </Row>
+                                        <Col sm={2}>
+                                            <div className="comment-action-button">
+                                                <button>
+                                                    <IoMdSend></IoMdSend>
+                                                </button>
+                                            </div>
 
+                                        </Col>
+                                    </Row>
                                 </Container>
 
                                 {comments.map((comment => (
 
                                     <Container>
-                                        <div className="comment ">
+                                        <div className="comment  ">
                                             <Row>
                                                 <Col sm={2}>
                                                     <span>{comment.author}</span>
