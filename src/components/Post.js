@@ -4,7 +4,7 @@ import {formatDate} from "../utils/helpers";
 import {FaCommentAlt, FaPencilAlt, FaThumbsDown, FaThumbsUp, FaTrashAlt} from 'react-icons/fa';
 import {handleDislikePost, handleLikePost, handleDeletePost, handleEditPost} from "../actions/post";
 import {connect} from "react-redux";
-import {NavLink} from "react-router-dom";
+import {NavLink, Redirect} from "react-router-dom";
 import EditModalPost from './EditModalPost'
 import PropTypes from 'prop-types';
 
@@ -21,7 +21,8 @@ class Post extends Component {
             show: false,
             id: '',
             title: '',
-            body: ''
+            body: '',
+            toHome: false,
         }
     }
 
@@ -40,9 +41,19 @@ class Post extends Component {
         })
     }
 
-    render() {
-        const {id, timestamp, title, body, author, voteScore, commentCount, category} = this.props.post;
+    deletePost = (id) =>{
+        this.props.handleDeletePost(id);
+        alert("Post deleted successful.")
+        this.setState({toHome: true})
+    }
 
+    render() {
+        const {toHome} = this.state;
+
+        if(toHome === true) {
+            return <Redirect to='/'/>
+        }
+        const {id, timestamp, title, body, author, voteScore, commentCount, category} = this.props.post;
 
         return (
             <div key={id}>
@@ -110,7 +121,7 @@ class Post extends Component {
 
                                         <Col sm={2}>
                                             <Card.Link href="#">
-                                            <div className="post-action-button2" onClick={() => this.props.handleDeletePost(id)}><FaTrashAlt/></div>
+                                            <div className="post-action-button2" onClick={() => this.deletePost(id)}><FaTrashAlt/></div>
                                             <span className="margin-vote"></span>
                                             <div className="post-action-button2" onClick={() => this.handleShow(id,body,title)}><FaPencilAlt/></div>
                                             </Card.Link>

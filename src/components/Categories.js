@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {Nav} from "react-bootstrap";
-import {NavLink} from "react-router-dom";
+import {NavLink, Link} from "react-router-dom";
 import {handleAllCategories} from "../actions/categories";
 
 class Categories extends Component {
@@ -21,9 +21,9 @@ class Categories extends Component {
                                 <Nav.Item key={categorie.path}>
                                     <div className="nav-padding nav-menu" key={categorie.path}>
 
-                                            <NavLink to={'/' + categorie.path} exact activeClassName='active' key={categorie.path} >
+                                            <Link to={'/' + categorie.path} exact activeClassName='active' key={categorie.path} >
                                                 {categorie.name}
-                                            </NavLink>
+                                            </Link>
 
 
                                     </div>

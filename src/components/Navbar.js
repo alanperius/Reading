@@ -1,5 +1,5 @@
 import React from 'react'
-import {NavLink} from "react-router-dom";
+import {NavLink, Link} from "react-router-dom";
 import {IoMdAddCircleOutline} from "react-icons/io";
 import { IconContext } from "react-icons";
 import { Container, Row, Col } from 'react-bootstrap';
@@ -15,14 +15,14 @@ export default function Navbar() {
                     <Row>
                         <Col></Col>
                         <Col xs={6}>
-                            <NavLink to='/' className=""> <span className="title" >Reading Project</span></NavLink>
+                            <Link to='/' exact className=""> <span className="title" >Reading Project</span></Link>
                         </Col >
                         <Col>
-                            <NavLink to='/new' exact activeClassName='active'>
+                            <Link to='/new' exact activeClassName='active'>
                                 <IconContext.Provider value={{ color: "white", className: "global-class-name", size:"3em"}}>
                                     <IoMdAddCircleOutline/>
                                 </IconContext.Provider>
-                            </NavLink>
+                            </Link>
 
                         </Col>
                     </Row>

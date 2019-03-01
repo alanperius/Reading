@@ -108,10 +108,14 @@ export const handlePostById = id => {
                 { headers: headers }
             )
             .then(response => {
-                dispatch(receivePost(response.data));
+                if(JSON.stringify(response.data) !== '{}'){
+                    console.log("aaaaaaaaaaaaaaaaaaa----------------------------------------------------");
+
+                    dispatch(receivePost(response.data));
+                }
                 dispatch(hideLoading())
-                /* console.log("Sucesso");
-                 console.log(response.data);*/
+                 console.log("Sucesso----------------------------------------------------");
+                 console.log(response.data);
             })
             .catch(error => {
                 console.log(error);
