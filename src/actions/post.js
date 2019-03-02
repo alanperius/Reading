@@ -9,6 +9,7 @@ export const DISLIKE_POST = 'DISLIKE_POST'
 export const ADD_POST = 'ADD_POST'
 export const DELETE_POST = 'DELETE_POST'
 export const EDIT_POST = 'EDIT_POST'
+export const GET_QTY_COMMENTS = 'GET_QTY_COMMENTS'
 
 
 let token = localStorage.token;
@@ -109,13 +110,9 @@ export const handlePostById = id => {
             )
             .then(response => {
                 if(JSON.stringify(response.data) !== '{}'){
-                    console.log("aaaaaaaaaaaaaaaaaaa----------------------------------------------------");
-
                     dispatch(receivePost(response.data));
                 }
                 dispatch(hideLoading())
-                 console.log("Sucesso----------------------------------------------------");
-                 console.log(response.data);
             })
             .catch(error => {
                 console.log(error);
@@ -184,37 +181,43 @@ export const handleEditPost = (id, title, body) => {
 };
 
 
+export function getQtyComments(newComment){
+    return {
+        type: GET_QTY_COMMENTS,
+        newComment,
+    }
 
+}
 
-export function editPost(post) {
+function editPost(post) {
     return {
         type: EDIT_POST,
         post,
     }
 }
 
-export function deletePost(postDeleted) {
+function deletePost(postDeleted) {
     return {
         type: DELETE_POST,
         postDeleted,
     }
 }
 
-export function receivePosts(posts) {
+function receivePosts(posts) {
     return {
         type: RECEIVE_POSTS,
         posts,
     }
 }
 
-export function receivePost(post) {
+function receivePost(post) {
     return {
         type: RECEIVE_POST,
         post,
     }
 }
 
-export function receivePostsByCategory(posts) {
+function receivePostsByCategory(posts) {
     return {
         type: RECEIVE_POSTS_CATEGORY,
         posts

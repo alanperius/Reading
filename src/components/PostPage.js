@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Post from './Post'
 import {connect} from "react-redux";
-import {handlePostById} from "../actions/post";
+import {getQtyComments, handlePostById} from "../actions/post";
 import {
     handleAddComment,
     handleDeleteComment,
@@ -56,6 +56,7 @@ class PostPage extends Component {
         e.preventDefault();
         const {newComment} = this.state;
         this.props.handleAddComment(newComment);
+        this.props.getQtyComments(newComment)
         this.resetState()
     };
 
@@ -73,7 +74,6 @@ class PostPage extends Component {
 
     render() {
         const {posts, comments} = this.props;
-
         return (
             <div>
 
@@ -212,5 +212,6 @@ export default connect(mapStateToProps,
         handleLikeComment,
         handleDislikeComment,
         handleDeleteComment,
-        handleEditComment
+        handleEditComment,
+        getQtyComments
     })(PostPage)

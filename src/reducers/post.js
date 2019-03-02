@@ -6,7 +6,8 @@ import {
     ADD_POST,
     RECEIVE_POST,
     DELETE_POST,
-    EDIT_POST
+    EDIT_POST,
+    GET_QTY_COMMENTS
 } from "../actions/post";
 
 export default function posts(state = [], action) {
@@ -32,6 +33,18 @@ export default function posts(state = [], action) {
             return state.filter(post => post.id !== action.postDeleted.id)
         case EDIT_POST:
             return state.map(post => post.id === action.post.id ? action.post : post)
+        case GET_QTY_COMMENTS:
+            return [
+                 ...state.map(post => {
+                    if (post.id === action.newComment.parentId) {
+                        return {
+                            ...post,
+                            commentCount: post.commentCount + 1
+                        }
+                    }
+                    return post
+                })
+            ]
         default:
             return state
     }
