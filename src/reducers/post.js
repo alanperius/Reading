@@ -39,7 +39,7 @@ export default function posts(state = [], action) {
                     if (post.id === action.newComment.parentId) {
                         return {
                             ...post,
-                            commentCount: post.commentCount + 1
+                            commentCount:  action.vote === 'up'  ? post.commentCount + 1 : post.commentCount - 1
                         }
                     }
                     return post

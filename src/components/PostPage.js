@@ -56,7 +56,7 @@ class PostPage extends Component {
         e.preventDefault();
         const {newComment} = this.state;
         this.props.handleAddComment(newComment);
-        this.props.getQtyComments(newComment)
+        this.props.getQtyComments(newComment, 'up')
         this.resetState()
     };
 
@@ -70,6 +70,12 @@ class PostPage extends Component {
             id: id,
             body: body,
         })
+    }
+
+    deleteComment(comment) {
+        this.props.handleDeleteComment(comment.id);
+        this.props.getQtyComments(comment, 'down')
+
     }
 
     render() {
@@ -135,7 +141,7 @@ class PostPage extends Component {
 
                                                 <Col sm={2}>
                                                     <div className="comment-action-button"
-                                                         onClick={() => this.props.handleDeleteComment(comment.id)}>
+                                                         onClick={() => this.deleteComment(comment)}>
                                                         <FaTrashAlt/></div>
                                                     <span className="margin-vote"></span>
                                                     <div className="comment-action-button"

@@ -116,6 +116,7 @@ export const handlePostById = id => {
             })
             .catch(error => {
                 console.log(error);
+                dispatch(hideLoading())
             });
     };
 };
@@ -181,10 +182,11 @@ export const handleEditPost = (id, title, body) => {
 };
 
 
-export function getQtyComments(newComment){
+export function getQtyComments(newComment, vote){
     return {
         type: GET_QTY_COMMENTS,
         newComment,
+        vote
     }
 
 }
