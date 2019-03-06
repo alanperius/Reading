@@ -13,7 +13,7 @@ Installation:
 Clone this repository;
 
 Step 1: Install and Start this application
-You just need to `run yarn` install and `yarn start` at root folder of this project to start this application.
+You just need to run `yarn install` and `yarn start` at root folder of this project to start this application.
 
 Step 2: Connecting to API Server
 This project needs to integrate with a local API server. In order to setup this API Server localhost you need to:
